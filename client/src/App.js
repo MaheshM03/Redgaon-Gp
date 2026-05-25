@@ -1,150 +1,164 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React from "react";
 
-import { LanguageProvider } from './context/LanguageContext.js';
-import { NewsProvider } from './context/NewsContext.js';
-import { GrievanceProvider } from './context/GrievanceContext.js';
-import { CertificateProvider } from './context/CertificateContext.js';
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
 
-import Home from './pages/Home.jsx';
-import AdminPanel from './pages/AdminPanel.jsx';
-import AdminLogin from './pages/AdminLogin.jsx';
-import Schemes from './pages/Schemes.jsx';
+import "./App.css";
 
-import AdminCommittee from './components/Sections/AdminCommittee.jsx';
-import CitizenPortal from './components/Sections/CitizenPortal.jsx';
-import SmartVillage from './components/Sections/SmartVillage.jsx';
-import GrievanceSection from './components/Sections/GrievanceSection.jsx';
-import RighttoInformation from './components/Sections/RighttoInformation.jsx';
-import Activity from './components/Sections/Activity.jsx';
-import AboutUs from './components/Sections/AboutUs.jsx';
-import DigitalLibrary from './components/Sections/DigitalLibrary.jsx';
+// =========================================
+// CONTEXT PROVIDERS
+// =========================================
 
-import BirthCertificate from './certificates/BirthCertificate.jsx';
-import BirthCertificateForm from './certificates/BirthCertificateForm.jsx';
+import { LanguageProvider } from "./context/LanguageContext.js";
 
-import DeathCertificate from './certificates/DeathCertificate.jsx';
-import DeathCertificateForm from './certificates/DeathCertificateForm.jsx';
+import { NewsProvider } from "./context/NewsContext.js";
 
-import ResidenceCertificate from './certificates/ResidenceCertificate.jsx';
-import ResidenceCertificateForm from './certificates/ResidenceCertificateForm.jsx';
+import { GrievanceProvider } from "./context/GrievanceContext.js";
 
-import MarriageCertificate from './certificates/MarriageCertificate.jsx'
-import BuildingPermitCertificate from './certificates/BuildingPermitCertificate.jsx';
+import { CertificateProvider } from "./context/CertificateContext.js";
 
-// import BusinessCertificate from './certificates/BusinessCertificate.jsx';
-import PropertyCard from './certificates/PropertyCard.jsx';
-import PropertyCertificate from './certificates/PropertyCertificate.jsx';
+// =========================================
+// PAGES
+// =========================================
 
-import BusinessTradeLicense from './certificates/BusinessTradeLicense.jsx';
-import BusinessTradeLicenseForm from './certificates/BusinessTradeLicenseForm.jsx';
+import Home from "./pages/Home.jsx";
 
+import AdminPanel from "./pages/AdminPanel.jsx";
 
-import './App.css';
-import BuildingPermitCertificateForm from './certificates/BuildingPermitCertificateForm.jsx';
-import VHNWSC from './components/othercommittees/VHNWSC.jsx';
-import MarriageCertificateForm from './certificates/MarriageCertificateForm.jsx';
+import AdminLogin from "./pages/AdminLogin.jsx";
 
-import AllNews from './components/Sections/AllNews.jsx';
-import { useNews } from './context/NewsContext.js';
-import VWSSC from './components/othercommittees/VWSSC.jsx';
-import Declaration from './pages/Declaration.jsx';
-import VCPC from './components/othercommittees/VCPC.jsx'; 
-import BMC from './components/othercommittees/BMC.jsx'; 
+import Schemes from "./pages/Schemes.jsx";
 
+import Declaration from "./pages/Declaration.jsx";
+
+import PdfViewer from "./pages/PdfViewer.jsx";
+
+// =========================================
+// SECTIONS
+// =========================================
+
+import AdminCommittee from "./components/Sections/AdminCommittee.jsx";
+
+import CitizenPortal from "./components/Sections/CitizenPortal.jsx";
+
+import SmartVillage from "./components/Sections/SmartVillage.jsx";
+
+import GrievanceSection from "./components/Sections/GrievanceSection.jsx";
+
+import RighttoInformation from "./components/Sections/RighttoInformation.jsx";
+
+import Activity from "./components/Sections/Activity.jsx";
+
+import AboutUs from "./components/Sections/AboutUs.jsx";
+
+import DigitalLibrary from "./components/Sections/DigitalLibrary.jsx";
+
+import AllNews from "./components/Sections/AllNews.jsx";
+
+// =========================================
+// OTHER COMMITTEES
+// =========================================
+
+import VHNWSC from "./components/othercommittees/VHNWSC.jsx";
+
+import VWSSC from "./components/othercommittees/VWSSC.jsx";
+
+import VCPC from "./components/othercommittees/VCPC.jsx";
+
+import BMC from "./components/othercommittees/BMC.jsx";
+
+// =========================================
+// CERTIFICATES
+// =========================================
+
+import BirthCertificate from "./certificates/BirthCertificate.jsx";
+
+import BirthCertificateForm from "./certificates/BirthCertificateForm.jsx";
+
+import DeathCertificate from "./certificates/DeathCertificate.jsx";
+
+import DeathCertificateForm from "./certificates/DeathCertificateForm.jsx";
+
+import ResidenceCertificate from "./certificates/ResidenceCertificate.jsx";
+
+import ResidenceCertificateForm from "./certificates/ResidenceCertificateForm.jsx";
+
+import MarriageCertificate from "./certificates/MarriageCertificate.jsx";
+
+import MarriageCertificateForm from "./certificates/MarriageCertificateForm.jsx";
+
+import BuildingPermitCertificate from "./certificates/BuildingPermitCertificate.jsx";
+
+import BuildingPermitCertificateForm from "./certificates/BuildingPermitCertificateForm.jsx";
+
+import PropertyCard from "./certificates/PropertyCard.jsx";
+
+import PropertyCertificate from "./certificates/PropertyCertificate.jsx";
+
+import BusinessTradeLicense from "./certificates/BusinessTradeLicense.jsx";
+
+import BusinessTradeLicenseForm from "./certificates/BusinessTradeLicenseForm.jsx";
+
+// =========================================
+// NEWS CONTEXT
+// =========================================
+
+import { useNews } from "./context/NewsContext.js";
+
+// =========================================
+// ALL NEWS PAGE
+// =========================================
 
 function AllNewsPage() {
+
   const { news, loading } = useNews();
-  return <AllNews newsList={loading ? [] : news} />;
+
+  return (
+
+    <AllNews
+      newsList={loading ? [] : news}
+    />
+
+  );
 }
 
-
-
-
+// =========================================
+// MAIN APP
+// =========================================
 
 function App() {
+
   return (
+
     <LanguageProvider>
+
       <NewsProvider>
+
         <GrievanceProvider>
+
           <CertificateProvider>
 
             <Routes>
 
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
+              {/* ========================================= */}
+              {/* HOME */}
+              {/* ========================================= */}
 
               <Route
-                path="/admin-committee"
-                element={<AdminCommittee />}
+                path="/"
+                element={<Home />}
               />
 
               <Route
-                path="/other-committees/vhnwsc"
-                element={<VHNWSC />}
-              />
-              <Route
-                path="/other-committees/vwssc"
-                element={<VWSSC />}
-              />
-              <Route
-                path="/other-committees/vcpc"
-                element={<VCPC />}
-              />
-              <Route
-                path="/other-committees/bmc"
-                element={<BMC />}
+                path="/home"
+                element={<Home />}
               />
 
-
-
-
-              <Route
-
-                path="/citizen-portal"
-                element={<CitizenPortal />}
-              />
-
-              <Route
-                path="/smart-village"
-                element={<SmartVillage />}
-              />
-
-              <Route
-                path="/rti"
-                element={<RighttoInformation />}
-              />
-
-              <Route
-                path="/grievance"
-                element={<GrievanceSection />}
-              />
-
-              <Route
-                path="/activity"
-                element={<Activity />}
-              />
-
-              <Route
-                path="/aboutus"
-                element={<AboutUs />}
-              />
-
-              <Route
-                path="/schemes"
-                element={<Schemes />}
-              />
-
-              <Route
-                path="/digital-library"
-                element={<DigitalLibrary />}
-              />
-
-              <Route
-                path="/declaration"
-                element={<Declaration />}
-              />
-
+              {/* ========================================= */}
+              {/* ADMIN */}
+              {/* ========================================= */}
 
               <Route
                 path="/admin"
@@ -155,6 +169,133 @@ function App() {
                 path="/admin-login"
                 element={<AdminLogin />}
               />
+
+              {/* ========================================= */}
+              {/* ADMIN COMMITTEE */}
+              {/* ========================================= */}
+
+              <Route
+                path="/admin-committee"
+                element={<AdminCommittee />}
+              />
+
+              {/* ========================================= */}
+              {/* OTHER COMMITTEES */}
+              {/* ========================================= */}
+
+              <Route
+                path="/other-committees/vhnwsc"
+                element={<VHNWSC />}
+              />
+
+              <Route
+                path="/other-committees/vwssc"
+                element={<VWSSC />}
+              />
+
+              <Route
+                path="/other-committees/vcpc"
+                element={<VCPC />}
+              />
+
+              <Route
+                path="/other-committees/bmc"
+                element={<BMC />}
+              />
+
+              {/* ========================================= */}
+              {/* PDF VIEWER */}
+              {/* ========================================= */}
+
+              <Route
+                path="/pdf-viewer"
+                element={<PdfViewer />}
+              />
+
+              {/* ========================================= */}
+              {/* CITIZEN PORTAL */}
+              {/* ========================================= */}
+
+              <Route
+                path="/citizen-portal"
+                element={<CitizenPortal />}
+              />
+
+              {/* ========================================= */}
+              {/* SMART VILLAGE */}
+              {/* ========================================= */}
+
+              <Route
+                path="/smart-village"
+                element={<SmartVillage />}
+              />
+
+              {/* ========================================= */}
+              {/* RTI */}
+              {/* ========================================= */}
+
+              <Route
+                path="/rti"
+                element={<RighttoInformation />}
+              />
+
+              {/* ========================================= */}
+              {/* GRIEVANCE */}
+              {/* ========================================= */}
+
+              <Route
+                path="/grievance"
+                element={<GrievanceSection />}
+              />
+
+              {/* ========================================= */}
+              {/* ACTIVITY */}
+              {/* ========================================= */}
+
+              <Route
+                path="/activity"
+                element={<Activity />}
+              />
+
+              {/* ========================================= */}
+              {/* ABOUT */}
+              {/* ========================================= */}
+
+              <Route
+                path="/aboutus"
+                element={<AboutUs />}
+              />
+
+              {/* ========================================= */}
+              {/* SCHEMES */}
+              {/* ========================================= */}
+
+              <Route
+                path="/schemes"
+                element={<Schemes />}
+              />
+
+              {/* ========================================= */}
+              {/* DIGITAL LIBRARY */}
+              {/* ========================================= */}
+
+              <Route
+                path="/digital-library"
+                element={<DigitalLibrary />}
+              />
+
+              {/* ========================================= */}
+              {/* DECLARATION */}
+              {/* ========================================= */}
+
+              <Route
+                path="/declaration"
+                element={<Declaration />}
+              />
+
+              {/* ========================================= */}
+              {/* BIRTH CERTIFICATE */}
+              {/* ========================================= */}
 
               <Route
                 path="/birth"
@@ -171,6 +312,10 @@ function App() {
                 element={<BirthCertificateForm />}
               />
 
+              {/* ========================================= */}
+              {/* DEATH CERTIFICATE */}
+              {/* ========================================= */}
+
               <Route
                 path="/death"
                 element={<DeathCertificate />}
@@ -186,6 +331,10 @@ function App() {
                 element={<DeathCertificateForm />}
               />
 
+              {/* ========================================= */}
+              {/* RESIDENCE CERTIFICATE */}
+              {/* ========================================= */}
+
               <Route
                 path="/residence"
                 element={<ResidenceCertificate />}
@@ -200,38 +349,38 @@ function App() {
                 path="/residence-apply"
                 element={<ResidenceCertificateForm />}
               />
+
+              {/* ========================================= */}
+              {/* MARRIAGE CERTIFICATE */}
+              {/* ========================================= */}
+
               <Route
                 path="/marriage"
                 element={<MarriageCertificate />}
               />
 
-            
-
               <Route
                 path="/marriage-apply"
-                element ={<MarriageCertificateForm />}
+                element={<MarriageCertificateForm />}
               />
+
+              {/* ========================================= */}
+              {/* BUILDING PERMIT */}
+              {/* ========================================= */}
 
               <Route
                 path="/building-permit"
                 element={<BuildingPermitCertificate />}
               />
 
-
-              {/* <Route
+              <Route
                 path="/building-permit-apply"
                 element={<BuildingPermitCertificateForm />}
-              /> */}
-
-              {/* <Route
-                path="/business"
-                element={<BusinessCertificate />}
-              /> */}
-
-              <Route
-                path="/allnews"
-                element={<AllNewsPage />}
               />
+
+              {/* ========================================= */}
+              {/* PROPERTY */}
+              {/* ========================================= */}
 
               <Route
                 path="/property-card"
@@ -243,10 +392,9 @@ function App() {
                 element={<PropertyCertificate />}
               />
 
-              {/* <Route
-                path="/property-apply"
-                element={<PropertyCertificateForm />}
-              /> */}
+              {/* ========================================= */}
+              {/* BUSINESS LICENSE */}
+              {/* ========================================= */}
 
               <Route
                 path="/business-trade-license"
@@ -258,35 +406,75 @@ function App() {
                 element={<BusinessTradeLicenseForm />}
               />
 
+              {/* ========================================= */}
+              {/* ALL NEWS */}
+              {/* ========================================= */}
+
               <Route
-                path="/building-permit-apply"
-                element={<BuildingPermitCertificateForm />}
+                path="/allnews"
+                element={<AllNewsPage />}
               />
 
-
+              {/* ========================================= */}
+              {/* 404 */}
+              {/* ========================================= */}
 
               <Route
                 path="*"
                 element={
+
                   <div
                     style={{
-                      padding: '20px',
-                      textAlign: 'center'
+                      padding: "40px",
+                      textAlign: "center",
+                      fontFamily: "Poppins",
                     }}
                   >
-                    <h1>404 - Page Not Found</h1>
 
-                    <a href="#/">
-                      Go back to Home
+                    <h1
+                      style={{
+                        fontSize: "42px",
+                        marginBottom: "20px",
+                        color: "#111827",
+                      }}
+                    >
+                      404
+                    </h1>
+
+                    <p
+                      style={{
+                        fontSize: "18px",
+                        marginBottom: "20px",
+                        color: "#6b7280",
+                      }}
+                    >
+                      Page Not Found
+                    </p>
+
+                    <a
+                      href="#/"
+                      style={{
+                        color: "#2563eb",
+                        textDecoration: "none",
+                        fontWeight: "600",
+                        fontSize: "16px",
+                      }}
+                    >
+                      Go Back Home
                     </a>
+
                   </div>
                 }
               />
+
             </Routes>
 
           </CertificateProvider>
+
         </GrievanceProvider>
+
       </NewsProvider>
+
     </LanguageProvider>
   );
 }
