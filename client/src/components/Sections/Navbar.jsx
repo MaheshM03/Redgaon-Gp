@@ -54,22 +54,23 @@ export default function Navbar() {
     },
 
     {
-  nameKey: "nav.otherCommittees",
-  to: "/other-committees",
-  hasDropdown: true,
+      nameKey: "nav.otherCommittees",
+      to: "/other-committees",
+      hasDropdown: true,
 
-  children: [
-    {
-      nameKey: "otherCommittees.vhnwsc",
-      to: "/other-committees/vhnwsc",
+      children: [
+        {
+          nameKey: "otherCommittees.vhnwsc",
+          to: "/other-committees/vhnwsc",
+        },
+
+        {
+          nameKey: "otherCommittees.vwssc",
+          to: "/other-committees/vwssc",
+        },
+      ],
     },
 
-    {
-      nameKey: "otherCommittees.vwssc",
-      to: "/other-committees/vwssc",
-    },
-  ],
-},
     {
       nameKey:
         "nav.citizenPortal",
@@ -80,15 +81,9 @@ export default function Navbar() {
 
       children: [
 
-        {
-          nameKey: "birth",
-          to: "/birth",
-        },
+        { nameKey: "birth", to: "/birth" },
 
-        {
-          nameKey: "death",
-          to: "/death",
-        },
+        { nameKey: "death", to: "/death" },
 
         {
           nameKey: "residence",
@@ -101,31 +96,18 @@ export default function Navbar() {
         },
 
         {
-          nameKey:
-            "buildingPermit",
-
+          nameKey: "buildingPermit",
           to: "/building-permit",
         },
 
         {
-          nameKey:
-            "businessTrade",
-
-          to: "/business",
+          nameKey: "businessTrade",
+          to: "/business-trade-license",
         },
 
         {
-          nameKey:
-            "property",
-
+          nameKey: "property",
           to: "/property-card",
-        },
-
-        {
-          nameKey:
-            "nav.schemes",
-
-          to: "/schemes",
         },
 
       ],
@@ -160,27 +142,34 @@ export default function Navbar() {
     },
 
     {
-      nameKey: "nav.aboutus",
+      nameKey:
+        "nav.aboutus",
+
       to: "/aboutus",
     },
 
     {
-      nameKey: "nav.allNews",
+      nameKey:
+        "nav.allNews",
+
       to: "/allnews",
     },
 
     {
-      nameKey: "nav.digitalLibrary",
+      nameKey:
+        "nav.digitalLibrary",
+
       to: "/digital-library",
     },
 
     {
-      nameKey: "nav.declarations",
+      nameKey:
+        "nav.declarations",
+
       to: "/declaration",
     },
 
   ];
-
 
   return (
     <>
@@ -199,7 +188,6 @@ html,
 body{
   margin:0;
   padding:0;
-
   overflow-x:hidden;
 }
 
@@ -207,16 +195,9 @@ body{
 
 .nb-root{
   width:100%;
-
   position:sticky;
-<<<<<<< HEAD
-
-=======
->>>>>>> 3067eef9686c684fa8728dc52d2e1fc0c724ce39
   top:0;
-
   z-index:1000;
-
   background:#ffffff;
 
   font-family:
@@ -252,17 +233,13 @@ body{
 
 .nb-topbar-left{
   display:flex;
-
   gap:14px;
-
   font-size:11px;
-
   font-weight:500;
 }
 
 .nb-topbar-right{
   display:flex;
-
   gap:6px;
 }
 
@@ -286,7 +263,6 @@ body{
 
 .nb-lang-btn.active{
   background:#fbbf24;
-
   color:#0f172a;
 }
 
@@ -396,9 +372,7 @@ body{
 
 .nb-links{
   display:flex;
-
   align-items:center;
-
   gap:2px;
 }
 
@@ -414,6 +388,12 @@ body{
   padding:14px 9px;
 
   transition:0.2s ease;
+
+  background:none;
+
+  border:none;
+
+  cursor:pointer;
 }
 
 .nb-link:hover{
@@ -448,9 +428,7 @@ body{
 
 .nb-link-wrapper{
   position:relative;
-
   display:flex;
-
   align-items:center;
 }
 
@@ -485,11 +463,13 @@ body{
 
   transition:0.2s ease;
 
+  z-index:999;
+}
 
+.nb-dropdown-menu.open{
+  opacity:1;
   visibility:visible;
-
-  transform:
-    translateY(0);
+  transform:translateY(0);
 }
 
 .nb-dropdown-item{
@@ -551,7 +531,6 @@ body{
 
 .nb-overlay.show{
   opacity:1;
-
   visibility:visible;
 }
 
@@ -598,6 +577,15 @@ body{
     translateX(0);
 }
 
+.nb-drawer::-webkit-scrollbar{
+  width:4px;
+}
+
+.nb-drawer::-webkit-scrollbar-thumb{
+  background:#475569;
+  border-radius:10px;
+}
+
 .nb-close{
   background:none;
 
@@ -628,6 +616,10 @@ body{
   display:block;
 
   font-size:13px;
+
+  width:100%;
+
+  text-align:left;
 }
 
 .nb-mob-link:hover{
@@ -653,72 +645,39 @@ body{
 
 @media(max-width:600px){
 
-  body{
-    margin:0;
-    padding:0;
-  }
-
-  .nb-root{
-    margin:0;
-    padding:0;
-  }
-
-  /* TOPBAR */
-
   .nb-topbar{
     padding:4px 8px;
-
-    min-height:32px;
   }
 
   .nb-topbar-left{
     display:none;
   }
 
-  .nb-topbar-right{
-    gap:4px;
-  }
-
   .nb-lang-btn{
     padding:3px 8px;
-
     font-size:9px;
   }
 
-  /* LOGOBAR */
-
   .nb-logobar{
     padding:6px 8px;
-
     gap:6px;
-
-    min-height:58px;
   }
 
   .nb-logo-img{
     width:30px;
     height:30px;
-
-    border-radius:6px;
   }
 
   .nb-logo-title{
     font-size:11px;
-
-    line-height:1.2;
   }
 
   .nb-logo-sub{
     font-size:6px;
-
-    margin-top:1px;
   }
-
-  /* NAVBAR */
 
   .nb-nav{
     min-height:40px;
-
     padding:0 8px;
   }
 
@@ -726,15 +685,12 @@ body{
     font-size:20px;
   }
 
-  /* DRAWER */
-
   .nb-drawer{
     width:84%;
   }
 
   .nb-mob-link{
     font-size:12px;
-
     padding:10px 8px;
   }
 }
@@ -763,8 +719,7 @@ body{
 
             <button
               className={`nb-lang-btn ${
-                currentLanguage ===
-                "en"
+                currentLanguage === "en"
                   ? "active"
                   : ""
               }`}
@@ -777,8 +732,7 @@ body{
 
             <button
               className={`nb-lang-btn ${
-                currentLanguage ===
-                "mr"
+                currentLanguage === "mr"
                   ? "active"
                   : ""
               }`}
@@ -797,8 +751,6 @@ body{
 
         <div className="nb-logobar">
 
-          {/* EMBLEM LEFT */}
-
           <div className="nb-logo-imgs">
 
             <img
@@ -808,8 +760,6 @@ body{
             />
 
           </div>
-
-          {/* CENTER TEXT */}
 
           <div className="nb-logo-text">
 
@@ -831,8 +781,6 @@ body{
 
           </div>
 
-          {/* LOGO RIGHT */}
-
           <div className="nb-logo-imgs">
 
             <img
@@ -851,13 +799,14 @@ body{
 
           <button
             className="nb-hamburger"
-
             onClick={() =>
               setMobileMenu(true)
             }
           >
             ☰
           </button>
+
+          {/* DESKTOP NAV */}
 
           <div className="nb-links">
 
@@ -881,17 +830,24 @@ body{
                 {link.hasDropdown ? (
 
                   <>
-                    <Link
-                      to={link.to}
+                    <button
+                      type="button"
                       className="nb-link"
+
+                      onClick={() =>
+                        setOpenDropdown(
+                          openDropdown === link.to
+                            ? null
+                            : link.to
+                        )
+                      }
                     >
                       {t(link.nameKey)}
-                    </Link>
+                    </button>
 
                     <div
                       className={`nb-dropdown-menu ${
-                        openDropdown ===
-                        link.to
+                        openDropdown === link.to
                           ? "open"
                           : ""
                       }`}
@@ -945,6 +901,124 @@ body{
           </Link>
 
         </nav>
+
+        {/* OVERLAY */}
+
+        <div
+          className={`nb-overlay ${
+            mobileMenu ? "show" : ""
+          }`}
+          onClick={() =>
+            setMobileMenu(false)
+          }
+        ></div>
+
+        {/* MOBILE DRAWER */}
+
+        <div
+          className={`nb-drawer ${
+            mobileMenu ? "open" : ""
+          }`}
+        >
+
+          <button
+            className="nb-close"
+            onClick={() =>
+              setMobileMenu(false)
+            }
+          >
+            ✕
+          </button>
+
+          {navLinks.map((link) => (
+
+            <div key={link.to}>
+
+              {link.hasDropdown ? (
+
+                <>
+                  <button
+                    className="nb-mob-link"
+
+                    style={{
+                      background: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
+
+                    onClick={() =>
+                      setOpenDropdown(
+                        openDropdown === link.to
+                          ? null
+                          : link.to
+                      )
+                    }
+                  >
+                    {t(link.nameKey)} ▼
+                  </button>
+
+                  {openDropdown === link.to && (
+
+                    <div
+                      style={{
+                        marginLeft: "12px",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+
+                      {link.children.map(
+                        (child) => (
+
+                          <Link
+                            key={child.to}
+
+                            to={child.to}
+
+                            className="nb-mob-link"
+
+                            onClick={() => {
+                              setMobileMenu(false);
+                              setOpenDropdown(null);
+                            }}
+
+                            style={{
+                              fontSize: "12px",
+                              padding:
+                                "8px 10px",
+                            }}
+                          >
+                            • {t(child.nameKey)}
+                          </Link>
+
+                        )
+                      )}
+
+                    </div>
+
+                  )}
+                </>
+
+              ) : (
+
+                <Link
+                  to={link.to}
+                  className="nb-mob-link"
+
+                  onClick={() =>
+                    setMobileMenu(false)
+                  }
+                >
+                  {t(link.nameKey)}
+                </Link>
+
+              )}
+
+            </div>
+
+          ))}
+
+        </div>
 
       </div>
 

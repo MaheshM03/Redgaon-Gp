@@ -31,14 +31,30 @@ const en = {
 
 "nav.declarations":
   "Declarations",
-   // Dropdown
-  "birth": "Birth Certificate",
-  "death": "Death Certificate",
-  "residence": "Residence Certificate",
-  "marriage": "Marriage Certificate",
-  "buildingPermit": "Building Permit",
-  "businessTrade": "Business Trade License",
-  "property": "Property Card",
+   // ======================================
+// CITIZEN PORTAL DROPDOWN
+// ======================================
+
+"birth":
+  "Birth Certificate",
+
+"death":
+  "Death Certificate",
+
+"residence":
+  "Residence Certificate",
+
+"marriage":
+  "Marriage Certificate",
+
+"buildingPermit":
+  "Building Permit",
+
+"businessTrade":
+  "Business Trade License",
+
+"property":
+  "Property Card",
 
   // Hero
   'hero.badge': '🏛️ Gram Panchayat Redgaon Kh',

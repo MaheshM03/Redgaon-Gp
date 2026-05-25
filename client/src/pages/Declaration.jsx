@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Navbar from "../components/Sections/Navbar";
+import Footer from "../components/Sections/Footer"
 
 const Declaration = () => {
 
@@ -54,15 +56,46 @@ const Declaration = () => {
   // SEARCH FILTER
   // =========================================
 
-  const filteredDeclarations = declarations.filter((item) =>
-    item.title?.toLowerCase().includes(
-      search.toLowerCase()
-    )
+  const publicDeclarationFiles = [
+    // Files present in `client/public/Declaration/`
+    "कोणत्याही योजनेचा लार् न घेतल्याचे स्वयंघोषणापत.pdf",
+    "दिभक्त कुटुांब स्ियांघोषणापत.pdf",
+    "पररत्यक्ता असल्याबाबत स्वयांघोषणापत्र.pdf",
+    "रदिवासी स्वयांघोषणापत.pdf",
+    "वयाबाबत स्वयंघोषणापत्र.pdf",
+    "विधवा असल्याचे प्रमाणपत्र.pdf",
+    "वीज जोडणी स्वयांघोषणापत.pdf",
+    "स्वयंघोषणापत्र.pdf",
+    "हयात असल्याबाबत स्वयघां ोषणापत.pdf",
+    "िौचालय असल्याबाबत स्वयंघोषणापत.pdf",
+  ];
+
+  const publicDeclarations = publicDeclarationFiles.map((filename) => ({
+    _id: `public-${filename}`,
+    title: filename,
+    date: "—",
+    pdf: `/Declaration/${filename}`,
+  }));
+
+  const mergedDeclarations = [
+    ...(Array.isArray(declarations) ? declarations : []),
+    ...publicDeclarations,
+  ];
+
+  const dedupedDeclarations = mergedDeclarations.filter((item, idx, arr) => {
+    const key = item?.pdf || item?._id || String(idx);
+    return (
+      arr.findIndex((x) => (x?.pdf || x?._id) === (item?.pdf || item?._id)) === idx
+    );
+  });
+
+  const filteredDeclarations = dedupedDeclarations.filter((item) =>
+    item.title?.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <>
-
+      <Navbar/>
       <style>
         {`
 
@@ -505,7 +538,7 @@ const Declaration = () => {
         </div>
 
       </section>
-
+     <Footer/>
     </>
   );
 };
