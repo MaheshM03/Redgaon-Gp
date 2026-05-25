@@ -51,16 +51,18 @@ const app = express();
 
 const mongoUri =
   process.env.MONGODB_URI ||
-  process.env.MONGO_URI;
+  process.env.MONGO_URI ||
+  'mongodb://localhost:27017/grampanchyat';
 
 if (!mongoUri) {
 
   console.error(
-    '❌ MongoDB connection error: missing MONGODB_URI'
+    '❌ MongoDB connection error: missing MONGODB_URI/MONGO_URI'
   );
 
   process.exit(1);
 }
+
 
 mongoose.connect(
   mongoUri,
