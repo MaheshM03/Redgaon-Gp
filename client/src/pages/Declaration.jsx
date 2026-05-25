@@ -71,6 +71,50 @@ const Declaration = () => {
   };
 
   // =========================================
+  // DOWNLOAD FUNCTION
+  // =========================================
+
+  const handleDownload = async (
+    pdfUrl,
+    fileName
+  ) => {
+
+    try {
+
+      const response =
+        await fetch(pdfUrl);
+
+      const blob =
+        await response.blob();
+
+      const url =
+        window.URL.createObjectURL(blob);
+
+      const link =
+        document.createElement("a");
+
+      link.href = url;
+
+      link.download = fileName;
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      document.body.removeChild(link);
+
+      window.URL.revokeObjectURL(url);
+
+    } catch (error) {
+
+      console.error(
+        "Download failed:",
+        error
+      );
+    }
+  };
+
+  // =========================================
   // STATIC PDF FILES
   // =========================================
 
@@ -177,7 +221,7 @@ const Declaration = () => {
   };
 
   // =========================================
-  // MERGE STATIC + DATABASE DATA
+  // MERGE DATA
   // =========================================
 
   const publicDeclarations =
@@ -230,10 +274,6 @@ const Declaration = () => {
 
       <Navbar />
 
-      {/* ========================================= */}
-      {/* CSS */}
-      {/* ========================================= */}
-
       <style>
 
         {`
@@ -255,7 +295,7 @@ const Declaration = () => {
           background:#f4f7fb;
         }
 
-        /* HERO SECTION */
+        /* HERO */
 
         .declaration-hero{
 
@@ -320,9 +360,6 @@ const Declaration = () => {
           justify-content:center;
 
           font-size:45px;
-
-          box-shadow:
-            0 12px 35px rgba(0,0,0,0.3);
         }
 
         .hero-content h1{
@@ -343,7 +380,7 @@ const Declaration = () => {
           color:#e5e7eb;
         }
 
-        /* MAIN CONTAINER */
+        /* MAIN */
 
         .declaration-container{
 
@@ -354,7 +391,7 @@ const Declaration = () => {
           padding:80px 20px;
         }
 
-        /* SEARCH BOX */
+        /* SEARCH */
 
         .search-box{
 
@@ -428,38 +465,12 @@ const Declaration = () => {
 
           padding:30px;
 
-          position:relative;
-
-          overflow:hidden;
-
           border:1px solid #e5e7eb;
 
           transition:0.4s ease;
 
           box-shadow:
             0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        .declaration-card::before{
-
-          content:"";
-
-          position:absolute;
-
-          top:0;
-
-          left:0;
-
-          width:100%;
-
-          height:6px;
-
-          background:
-            linear-gradient(
-              to right,
-              #2563eb,
-              #1d4ed8
-            );
         }
 
         .declaration-card:hover{
@@ -472,7 +483,7 @@ const Declaration = () => {
             rgba(37,99,235,0.18);
         }
 
-        /* TOP SECTION */
+        /* TOP */
 
         .pdf-top{
 
@@ -574,15 +585,17 @@ const Declaration = () => {
 
         /* BUTTON */
 
-        .btn-group{
-          width:100%;
-        }
-
         .download-btn{
 
           width:100%;
 
-          display:block;
+          display:flex;
+
+          align-items:center;
+
+          justify-content:center;
+
+          cursor:pointer;
 
           padding:14px 20px;
 
@@ -590,15 +603,9 @@ const Declaration = () => {
 
           border-radius:40px;
 
-          text-decoration:none;
-
-          text-align:center;
-
           font-size:14px;
 
           font-weight:600;
-
-          transition:0.3s ease;
 
           background:
             linear-gradient(
@@ -608,6 +615,8 @@ const Declaration = () => {
             );
 
           color:#fff;
+
+          transition:0.3s ease;
         }
 
         .download-btn:hover{
@@ -617,7 +626,7 @@ const Declaration = () => {
           opacity:0.92;
         }
 
-        /* PORTAL SECTION */
+        /* PORTALS */
 
         .portal-section{
 
@@ -649,17 +658,6 @@ const Declaration = () => {
           color:#111827;
 
           margin-bottom:15px;
-
-          font-weight:700;
-        }
-
-        .portal-heading p{
-
-          color:#6b7280;
-
-          font-size:16px;
-
-          line-height:1.8;
         }
 
         .portal-grid{
@@ -690,18 +688,12 @@ const Declaration = () => {
           text-align:center;
 
           border:1px solid #e5e7eb;
-
-          box-shadow:
-            0 10px 25px rgba(0,0,0,0.06);
         }
 
         .portal-card:hover{
 
           transform:
             translateY(-10px);
-
-          box-shadow:
-            0 20px 40px rgba(37,99,235,0.15);
         }
 
         .portal-icon{
@@ -752,53 +744,12 @@ const Declaration = () => {
           line-height:1.7;
         }
 
-        /* LOADING */
-
-        .loading{
-
-          text-align:center;
-
-          padding:80px 20px;
-
-          font-size:24px;
-
-          font-weight:600;
-
-          color:#2563eb;
-        }
-
-        /* EMPTY */
-
-        .empty-data{
-
-          text-align:center;
-
-          padding:80px 20px;
-
-          color:#6b7280;
-
-          font-size:20px;
-        }
-
         /* MOBILE */
 
         @media(max-width:768px){
 
-          .declaration-hero{
-
-            min-height:280px;
-
-            border-bottom-left-radius:40px;
-
-            border-bottom-right-radius:40px;
-          }
-
           .hero-content h1{
             font-size:34px;
-          }
-
-          .hero-content p{
-            font-size:14px;
           }
 
           .declaration-container{
@@ -818,12 +769,6 @@ const Declaration = () => {
 
           .declaration-card{
             padding:25px;
-          }
-
-          .pdf-top{
-            flex-direction:column;
-            gap:10px;
-            align-items:flex-start;
           }
         }
 
@@ -882,469 +827,72 @@ const Declaration = () => {
 
           </div>
 
-          {/* LOADING */}
+          {/* GRID */}
 
-          {loading ? (
+          <div className="declaration-grid">
 
-            <div className="loading">
+            {filteredDeclarations.map(
+              (item, index) => (
 
-              Loading Documents...
+                <div
+                  className="declaration-card"
+                  key={item._id}
+                >
 
-            </div>
+                  <div className="pdf-top">
 
-          ) : filteredDeclarations.length > 0 ? (
+                    <span className="pdf-number">
 
-            <div className="declaration-grid">
+                      #
+                      {String(
+                        index + 1
+                      ).padStart(2, "0")}
 
-              {filteredDeclarations.map(
-                (item, index) => (
+                    </span>
 
-                  <div
-                    className="declaration-card"
-                    key={item._id}
-                  >
+                    <span className="pdf-category">
 
-                    <div className="pdf-top">
+                      {item.category}
 
-                      <span className="pdf-number">
-
-                        #
-                        {String(
-                          index + 1
-                        ).padStart(2, "0")}
-
-                      </span>
-
-                      <span className="pdf-category">
-
-                        {item.category}
-
-                      </span>
-
-                    </div>
-
-                    <div className="pdf-icon">
-                      📑
-                    </div>
-
-                    <h3>
-                      {item.title}
-                    </h3>
-
-                    <div className="declaration-date">
-
-                      {item.date}
-
-                    </div>
-
-                    <div className="btn-group">
-
-                      <a
-                        href={item.pdf}
-                        download
-                        className="download-btn"
-                      >
-
-                        Download PDF
-
-                      </a>
-
-                    </div>
+                    </span>
 
                   </div>
-                )
-              )}
 
-            </div>
+                  <div className="pdf-icon">
+                    📑
+                  </div>
 
-          ) : (
+                  <h3>
+                    {item.title}
+                  </h3>
 
-            <div className="empty-data">
+                  <div className="declaration-date">
 
-              No Declaration Found
+                    {item.date}
 
-            </div>
+                  </div>
 
-          )}
+                  <button
+                    className="download-btn"
+                    onClick={() =>
+                      handleDownload(
+                        item.pdf,
+                        item.title + ".pdf"
+                      )
+                    }
+                  >
 
-        </div>
+                    Download PDF
 
-        {/* PORTALS */}
+                  </button>
 
-        <section className="portal-section">
-
-          <div className="portal-container">
-
-            <div className="portal-heading">
-
-              <h2>
-                Various Government Portals
-              </h2>
-
-              <p>
-
-                शासनाच्या विविध अधिकृत
-                पोर्टल्ससाठी खालील लिंकचा
-                वापर करा.
-
-              </p>
-
-            </div>
-
-          <div className="portal-grid">
-
-  {/* 1 */}
-
-  <a
-    href="https://gr.maharashtra.gov.in/1145/Government-Resolutions"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      📜
-    </div>
-
-    <h3>
-      शासन निर्णय
-    </h3>
-
-    <p>
-      महाराष्ट्र शासनाचे विविध शासन निर्णय
-      पाहण्यासाठी इथे click करा.
-    </p>
-
-  </a>
-
-  {/* 2 */}
-
-  <a
-    href="https://maharashtra.gov.in/Site/ViewPDFList?doctype=R/m8/CavzsOmBKuREE9kWgvI09nVvwQImYMEm1tPfTwRcIKkAeQzS1L5_1VU1b8Nt26E0_bWmVDE26DJBQMJznfvpERSjMkTAmFBZN2sogc="
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🏛️
-    </div>
-
-    <h3>
-      मंत्रिमंडळ निर्णय
-    </h3>
-
-    <p>
-      मंत्रिमंडळ निर्णय पाहण्यासाठी
-      इथे click करा.
-    </p>
-
-  </a>
-
-  {/* 3 */}
-
-  <a
-    href="https://maharashtra.gov.in/home/index"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🌐
-    </div>
-
-    <h3>
-      महाराष्ट्र शासन
-    </h3>
-
-    <p>
-      महाराष्ट्र शासनाचे अधिकृत संकेतस्थळ
-    </p>
-
-  </a>
-
-  {/* 4 */}
-
-  <a
-    href="https://nashik.gov.in/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🏙️
-    </div>
-
-    <h3>
-      नाशिक जिल्हा
-    </h3>
-
-    <p>
-      नाशिक जिल्ह्याचे अधिकृत संकेतस्थळ
-    </p>
-
-  </a>
-
-  {/* 5 */}
-
-  <a
-    href="https://egramswaraj.gov.in/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🖥️
-    </div>
-
-    <h3>
-      eGramSwaraj
-    </h3>
-
-    <p>
-      eGramSwaraj Portal
-    </p>
-
-  </a>
-
-  {/* 6 */}
-
-  <a
-    href="https://aaplesarkar.mahaonline.gov.in/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      📋
-    </div>
-
-    <h3>
-      आपले सरकार
-    </h3>
-
-    <p>
-      आपले सरकार पोर्टल
-    </p>
-
-  </a>
-
-  {/* 7 */}
-
-  <a
-    href="https://uidai.gov.in/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🪪
-    </div>
-
-    <h3>
-      आधार
-    </h3>
-
-    <p>
-      UIDAI आधार सेवा
-    </p>
-
-  </a>
-
-  {/* 8 */}
-
-  <a
-    href="https://mahabhumi.gov.in/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🌾
-    </div>
-
-    <h3>
-      डिजिटल ७/१२
-    </h3>
-
-    <p>
-      महाभूमी डिजिटल जमीन नोंद
-    </p>
-
-  </a>
-
-  {/* 9 */}
-
-  <a
-    href="https://divyangsahayak.maharashtra.gov.in/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      ♿
-    </div>
-
-    <h3>
-      दिव्यांग सहाय्यक
-    </h3>
-
-    <p>
-      दिव्यांग सहाय्यक पोर्टल
-    </p>
-
-  </a>
-
-  {/* 10 */}
-
-  <a
-    href="https://voters.eci.gov.in/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🗳️
-    </div>
-
-    <h3>
-      मतदाता सेवा
-    </h3>
-
-    <p>
-      मतदाता सेवा पोर्टल
-    </p>
-
-  </a>
-
-  {/* 11 */}
-
-  <a
-    href="https://grammanchitra.gov.in/gm4MVC"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🗺️
-    </div>
-
-    <h3>
-      ग्राम मानचित्र
-    </h3>
-
-    <p>
-      ग्राम मानचित्र पोर्टल
-    </p>
-
-  </a>
-
-  {/* 12 */}
-
-  <a
-    href="https://www.digilocker.gov.in/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🔐
-    </div>
-
-    <h3>
-      DigiLocker
-    </h3>
-
-    <p>
-      DigiLocker सेवा
-    </p>
-
-  </a>
-
-  {/* 13 */}
-
-  <a
-    href="https://meetingonline.gov.in/homepage"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      📑
-    </div>
-
-    <h3>
-      पंचायत निर्णय
-    </h3>
-
-    <p>
-      पंचायत निर्णय पोर्टल
-    </p>
-
-  </a>
-
-  {/* 14 */}
-
-  <a
-    href="https://nrega.dord.gov.in/MGNREGA_new/Nrega_home.aspx"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      👷
-    </div>
-
-    <h3>
-      रोजगार हमी योजना
-    </h3>
-
-    <p>
-      महात्मा गांधी रोजगार हमी योजना
-    </p>
-
-  </a>
-
-  {/* 15 */}
-
-  <a
-    href="https://mgmd.gov.in/explore"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="portal-card"
-  >
-
-    <div className="portal-icon">
-      🏡
-    </div>
-
-    <h3>
-      मेरा गाव मेरी धरोहर
-    </h3>
-
-    <p>
-      मेरा गाव मेरी धरोहर पोर्टल
-    </p>
-
-  </a>
-
-</div>
+                </div>
+              )
+            )}
 
           </div>
 
-        </section>
+        </div>
 
       </section>
 
