@@ -28,6 +28,12 @@ const en = {
 
 "otherCommittees.vwssc":
   "Village Water Supply & Sanitation Committee",
+  
+  "otherCommittees.vcpc":
+  "Village Child Protection Committee",
+
+"otherCommittees.bmc":
+  "Biodiversity Management Committee",
 
 "nav.declarations":
   "Declarations",
@@ -2740,6 +2746,76 @@ const en = {
 
 "residence.apply":
   "Apply Now",
+
+  // ======================================
+// VWSSC
+// ======================================
+
+"vwssc.logo":
+  "Water",
+
+"vwssc.title":
+  "Village Water Supply and Sanitation Committee",
+
+"vwssc.subtitle":
+  "Committee working for village water supply, sanitation and health management",
+
+"vwssc.members":
+  "Committee Members",
+
+// Roles
+"vwssc.sarpanch":
+  "Sarpanch",
+
+"vwssc.deputySarpanch":
+  "Deputy Sarpanch",
+
+"vwssc.member":
+  "Member",
+
+"vwssc.memberFemale":
+  "Member",
+
+"vwssc.officer":
+  "Gram Panchayat Officer",
+
+"vwssc.operator":
+  "Computer Operator",
+
+  // ======================================
+// VCPC
+// ======================================
+
+"vcpc.logo":
+  "Child Protection",
+
+"vcpc.title":
+  "Village Child Protection Committee",
+
+"vcpc.subtitle":
+  "Committee working for protection, education, health and safety of children in the village",
+
+"vcpc.members":
+  "Committee Members",
+
+// Roles
+"vcpc.sarpanch":
+  "Sarpanch",
+
+"vcpc.deputySarpanch":
+  "Deputy Sarpanch",
+
+"vcpc.member":
+  "Member",
+
+"vcpc.memberFemale":
+  "Member",
+
+"vcpc.officer":
+  "Gram Panchayat Officer",
+
+"vcpc.operator":
+  "Computer Operator",
 
 };
 

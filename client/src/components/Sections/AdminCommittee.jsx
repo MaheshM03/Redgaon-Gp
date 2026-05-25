@@ -92,6 +92,7 @@ const membersData = [
     roleMr: "ग्रामपंचायत अधिकारी",
     mobile: "9860582261",
     tier: "officer",
+    img: "/श्री सचिन त्रम्बक सानप.jpeg",
   },
 
   {

@@ -230,8 +230,8 @@ const members = [
     tier:
       "officer",
 
-    img:
-      "/default-user.png",
+   img:
+     "/श्री सचिन त्रम्बक सानप.jpeg",
   },
 
   {

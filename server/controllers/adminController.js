@@ -12,7 +12,7 @@ exports.getAllDocuments = async (req, res) => {
     ]);
 
     const allCerts = [
-      ...births.map(cert => ({
+      ...births.map((cert) => ({
         type: 'Birth',
         token: cert.token,
         mobile: cert.mobile || 'N/A',
@@ -20,7 +20,7 @@ exports.getAllDocuments = async (req, res) => {
         submittedAt: cert.submittedAt,
         documents: cert.documents || []
       })),
-      ...deaths.map(cert => ({
+      ...deaths.map((cert) => ({
         type: 'Death',
         token: cert.token,
         mobile: cert.informantDetails?.mobile || 'N/A',
@@ -28,7 +28,7 @@ exports.getAllDocuments = async (req, res) => {
         submittedAt: cert.submittedAt,
         documents: cert.documents || []
       })),
-      ...residences.map(cert => ({
+      ...residences.map((cert) => ({
         type: 'Residence',
         token: cert.token,
         mobile: cert.mobile || 'N/A',
@@ -38,14 +38,19 @@ exports.getAllDocuments = async (req, res) => {
       }))
     ];
 
-    res.json({
+    return res.json({
       success: true,
       data: allCerts,
       count: allCerts.length
     });
   } catch (error) {
     console.error('Get all documents error:', error);
-    res.status(500).json({ success: false, message: 'Server error' });
+    return res.status(500).json({ success: false, message: 'Server error' });
   }
+};
+
+// @desc Admin health check (admin-only)
+exports.adminHealth = async (req, res) => {
+  return res.json({ success: true, ok: true });
 };
 

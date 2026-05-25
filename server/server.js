@@ -1,32 +1,17 @@
 require('dotenv').config();
 
 const express = require('express');
-
 const cors = require('cors');
-
 const helmet = require('helmet');
-
 const morgan = require('morgan');
-
 const rateLimit = require('express-rate-limit');
-
-const mongoSanitize =
-  require('express-mongo-sanitize');
-
+const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
-
 const multer = require('multer');
-
 const path = require('path');
-
 const mongoose = require('mongoose');
-
-const session =
-  require('express-session');
-
-const cookieParser =
-  require('cookie-parser');
-
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 
 /* ================= ROUTES ================= */
@@ -169,13 +154,22 @@ const upload = multer({
 
 });
 
-/* ================= MIDDLEWARE ================= */
+/* ================= BODY PARSER ================= */
 
 app.use(
   express.json({
     limit: '10mb'
   })
 );
+
+app.use(
+  express.urlencoded({
+    extended: true,
+    limit: '10mb'
+  })
+);
+
+/* ================= SECURITY ================= */
 
 app.use(helmet());
 
@@ -185,52 +179,86 @@ app.use(mongoSanitize());
 
 app.use(xss());
 
-/* ================= RATE LIMIT ================= */
 
-app.use(
-  rateLimit({
-    windowMs:
-      15 * 60 * 1000,
+const limiter = rateLimit({
 
-    max: 100
-  })
-);
+  windowMs:
+    15 * 60 * 1000,
 
-/* ================= CORS ================= */
+  max: 500,
+
+  standardHeaders: true,
+
+  legacyHeaders: false,
+
+  message: {
+    success: false,
+    message:
+      'Too many requests, please try again later.'
+  }
+
+});
+
+app.use('/api', limiter);
+
+
 
 app.use(
   cors({
 
     origin: [
+
       'http://localhost:3000',
 
-      'https://grampanchyat1.onrender.com',
+      'http://127.0.0.1:3000',
 
-      'https://grampanchyat-065z.onrender.com'
+      'https://redgaon-gp.vercel.app'
+
     ],
 
-    credentials: true
+    credentials: true,
+
+    methods: [
+      'GET',
+      'POST',
+      'PUT',
+      'DELETE',
+      'PATCH',
+      'OPTIONS'
+    ],
+
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization'
+    ]
 
   })
 );
 
-/* ================= SESSION ================= */
+
 
 app.use(cookieParser());
+
+
 
 app.use(
   session({
 
     secret:
+      process.env.SESSION_SECRET ||
       'grampanchayat-session-secret',
 
     resave: false,
 
-    saveUninitialized: true,
+    saveUninitialized: false,
 
     cookie: {
 
       secure: false,
+
+      httpOnly: true,
+
+      sameSite: 'lax',
 
       maxAge:
         24 *
@@ -243,7 +271,7 @@ app.use(
   })
 );
 
-/* ================= JWT ================= */
+
 
 const SECRET =
   process.env.JWT_SECRET ||
@@ -256,13 +284,27 @@ console.log(
     : 'default'
 );
 
-/* ================= TEST ROUTE ================= */
+
+
+app.get(
+  '/',
+  (req, res) => {
+
+    res.send(
+      '🚀 API is running successfully'
+    );
+
+  }
+);
+
+
 
 app.get(
   '/api/test',
   (req, res) => {
 
     res.json({
+      success: true,
       message:
         'API is working 🚀'
     });
@@ -270,20 +312,7 @@ app.get(
   }
 );
 
-/* ================= ROOT ================= */
 
-app.get(
-  '/',
-  (req, res) => {
-
-    res.send(
-      'API is running 🚀'
-    );
-
-  }
-);
-
-/* ================= LOGIN ================= */
 
 app.post(
   '/api/auth/login',
@@ -314,47 +343,48 @@ app.post(
         'adminToken',
         token,
         {
+
           httpOnly: false,
 
-          path: '/',
+          secure: false,
 
           sameSite: 'lax',
 
-          secure: false,
+          path: '/',
 
           maxAge:
             24 *
             60 *
             60 *
             1000
+
         }
       );
 
       return res.json({
+
         success: true,
+
         message:
-          'Logged in',
+          'Logged in successfully',
+
         token
+
       });
     }
 
-    res.status(401).json({
+    return res.status(401).json({
+
       success: false,
+
       message:
         'Invalid credentials'
+
     });
 
   }
 );
 
-/* ================= PUBLIC NEWS ================= */
-
-app.use(
-  '/api/news',
-  newsRoutes
-);
-
-/* ================= ROUTES ================= */
 
 app.use(
   '/api/news',
@@ -382,13 +412,6 @@ app.use(
 );
 
 app.use(
-  '/api/declarations/',
-  declarationsRoutes
-);
-
-/* ================= CERTIFICATES ================= */
-
-app.use(
   '/api/birth-certificates',
   birthCertRoutes
 );
@@ -403,7 +426,7 @@ app.use(
   residenceCertRoutes
 );
 
-/* ================= ADMIN ================= */
+
 
 app.use(
   '/api/admin',
@@ -411,7 +434,7 @@ app.use(
   require('./routes/admin')
 );
 
-/* ================= UPLOADS ================= */
+
 
 app.use(
   '/uploads',
@@ -423,35 +446,66 @@ app.use(
   )
 );
 
-/* ================= ERROR HANDLER ================= */
+
 
 app.use(
-  (err, req, res, next) => {
+  '*',
+  (req, res) => {
 
-    console.error(err);
+    res.status(404).json({
 
-    if (
-      req.path &&
-      req.path.startsWith('/api')
-    ) {
+      success: false,
 
-      return res.status(500).json({
-        message:
-          'Server error'
-      });
-    }
+      message:
+        'Route not found'
 
-    next(err);
+    });
 
   }
 );
 
-/* ================= PORT ================= */
+
+
+app.use(
+  (err, req, res, next) => {
+
+    console.error(
+      '❌ Server Error:',
+      err
+    );
+
+    if (
+      err.name === 'MulterError'
+    ) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          err.message
+
+      });
+    }
+
+    return res.status(500).json({
+
+      success: false,
+
+      message:
+        'Internal server error'
+
+    });
+
+  }
+);
+
+
 
 const PORT =
   process.env.PORT || 10000;
 
-/* ================= START ================= */
+
 
 app.listen(PORT, () => {
 

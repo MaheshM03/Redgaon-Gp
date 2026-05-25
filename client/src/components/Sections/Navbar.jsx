@@ -55,7 +55,7 @@ export default function Navbar() {
 
     {
       nameKey: "nav.otherCommittees",
-      to: "/other-committees",
+      to: "/other-committees/vhnwsc",
       hasDropdown: true,
 
       children: [
@@ -67,6 +67,16 @@ export default function Navbar() {
         {
           nameKey: "otherCommittees.vwssc",
           to: "/other-committees/vwssc",
+        },
+
+        {
+          nameKey: "otherCommittees.vcpc",
+          to: "/other-committees/vcpc",
+        },
+
+        {
+          nameKey: "otherCommittees.bmc",
+          to: "/other-committees/bmc",
         },
       ],
     },

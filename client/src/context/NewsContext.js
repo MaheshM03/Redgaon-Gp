@@ -353,18 +353,9 @@ export const NewsProvider = ({ children }) => {
 
   /* ================= AUTO FETCH ================= */
 
-  useEffect(() => {
-
-    fetchNews();
-
-    const interval = setInterval(
-      fetchNews,
-      30000
-    );
-
-    return () => clearInterval(interval);
-
-  }, [fetchNews]);
+ useEffect(() => {
+  fetchNews();
+}, [fetchNews]);
 
   return (
     <NewsContext.Provider

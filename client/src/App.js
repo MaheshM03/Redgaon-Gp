@@ -31,6 +31,7 @@ import ResidenceCertificateForm from './certificates/ResidenceCertificateForm.js
 
 import MarriageCertificate from './certificates/MarriageCertificate.jsx'
 import BuildingPermitCertificate from './certificates/BuildingPermitCertificate.jsx';
+
 // import BusinessCertificate from './certificates/BusinessCertificate.jsx';
 import PropertyCard from './certificates/PropertyCard.jsx';
 import PropertyCertificate from './certificates/PropertyCertificate.jsx';
@@ -48,6 +49,8 @@ import AllNews from './components/Sections/AllNews.jsx';
 import { useNews } from './context/NewsContext.js';
 import VWSSC from './components/othercommittees/VWSSC.jsx';
 import Declaration from './pages/Declaration.jsx';
+import VCPC from './components/othercommittees/VCPC.jsx'; 
+import BMC from './components/othercommittees/BMC.jsx'; 
 
 
 function AllNewsPage() {
@@ -80,10 +83,19 @@ function App() {
                 path="/other-committees/vhnwsc"
                 element={<VHNWSC />}
               />
-              <Route 
-                path="/other-committees/vwssc" 
-                element={<VWSSC />} 
+              <Route
+                path="/other-committees/vwssc"
+                element={<VWSSC />}
               />
+              <Route
+                path="/other-committees/vcpc"
+                element={<VCPC />}
+              />
+              <Route
+                path="/other-committees/bmc"
+                element={<BMC />}
+              />
+
 
 
 

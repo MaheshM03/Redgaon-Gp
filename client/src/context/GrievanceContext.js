@@ -157,17 +157,8 @@ export const GrievanceProvider = ({
   /* ================= AUTO REFRESH ================= */
 
   useEffect(() => {
-
-    fetchGrievances();
-
-    const interval = setInterval(
-      fetchGrievances,
-      30000
-    );
-
-    return () => clearInterval(interval);
-
-  }, [fetchGrievances]);
+  fetchGrievances();
+}, [fetchGrievances]);
 
   return (
     <GrievanceContext.Provider

@@ -1,11 +1,11 @@
 import React from "react";
 
-import Navbar from "../Sections/Navbar";
 import Footer from "../Sections/Footer";
+import Navbar from "../Sections/Navbar";
 
 import { useTranslator } from "../../context/LanguageContext";
 
-const VWSSC = () => {
+const VCPC = () => {
 
   const {
     t,
@@ -24,7 +24,7 @@ const VWSSC = () => {
         "श्री. यादव काशिनाथ गरुड",
 
       roleKey:
-        "vwssc.sarpanch",
+        "vcpc.sarpanch",
 
       mobile:
         "9270572674",
@@ -43,7 +43,7 @@ const VWSSC = () => {
         "सौ. सुनिता अण्णासाहेब काळे",
 
       roleKey:
-        "vwssc.deputySarpanch",
+        "vcpc.deputySarpanch",
 
       mobile:
         "9423078435",
@@ -62,7 +62,7 @@ const VWSSC = () => {
         "श्री. संजय दगू काळे",
 
       roleKey:
-        "vwssc.member",
+        "vcpc.member",
 
       mobile:
         "9552224456",
@@ -81,7 +81,7 @@ const VWSSC = () => {
         "सौ. कुसुम संजय काळे",
 
       roleKey:
-        "vwssc.memberFemale",
+        "vcpc.memberFemale",
 
       mobile:
         "9689455720",
@@ -100,7 +100,7 @@ const VWSSC = () => {
         "सौ. शीतल गणेश अहेर",
 
       roleKey:
-        "vwssc.memberFemale",
+        "vcpc.memberFemale",
 
       mobile:
         "9604194528",
@@ -119,7 +119,7 @@ const VWSSC = () => {
         "कु. उमाकांत श्रीराम काळे",
 
       roleKey:
-        "vwssc.memberFemale",
+        "vcpc.memberFemale",
 
       mobile:
         "7517497815",
@@ -138,7 +138,7 @@ const VWSSC = () => {
         "श्री. गणेश मच्छिंद्र ठाकरे",
 
       roleKey:
-        "vwssc.member",
+        "vcpc.member",
 
       mobile:
         "9822479345",
@@ -157,7 +157,7 @@ const VWSSC = () => {
         "कु. रुपाली संतोष काळे",
 
       roleKey:
-        "vwssc.memberFemale",
+        "vcpc.memberFemale",
 
       mobile:
         "8767428964",
@@ -176,7 +176,7 @@ const VWSSC = () => {
         "श्री. सचिन त्रंबक सानप",
 
       roleKey:
-        "vwssc.officer",
+        "vcpc.officer",
 
       mobile:
         "9860582261",
@@ -195,7 +195,7 @@ const VWSSC = () => {
         "श्री. अण्णासाहेब निवृत्ती काळे",
 
       roleKey:
-        "vwssc.operator",
+        "vcpc.operator",
 
       mobile:
         "9423078435",
@@ -218,181 +218,106 @@ const VWSSC = () => {
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
-  overflow-x:hidden;
-
-  background:#f8fafc;
-
-  font-family:
-    "Inter",
-    "Poppins",
-    sans-serif;
+  background:#f5f7fb;
+  font-family:"Poppins",sans-serif;
 }
 
-/* SECTION */
-
-.vwssc-section{
+.vcpc-section{
   width:100%;
-
-  background:#f8fafc;
-
   overflow:hidden;
+  background:#f5f7fb;
 }
 
-/* HERO */
+/* HERO SECTION */
 
-.vwssc-hero{
-  position:relative;
-
+.vcpc-hero{
   width:100%;
-
-  min-height:300px;
+  min-height:420px;
 
   background:
     linear-gradient(
-      rgba(0,115,92,0.88),
-      rgba(0,115,92,0.88)
+      rgba(79,70,229,0.92),
+      rgba(67,56,202,0.92)
     ),
-    url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop");
+    url("https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1600&auto=format&fit=crop");
 
   background-size:cover;
-
   background-position:center;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   text-align:center;
 
-  padding:50px 20px 40px;
+  padding:60px 20px;
 
-  overflow:hidden;
-}
+  border-bottom-left-radius:90px;
+  border-bottom-right-radius:90px;
 
-/* HERO EFFECT */
-
-.vwssc-hero::before{
-  content:"";
-
-  position:absolute;
-
-  width:220px;
-  height:220px;
-
-  top:-100px;
-  right:-70px;
-
-  border-radius:50%;
-
-  background:
-    rgba(255,255,255,0.08);
-
-  filter:blur(10px);
-}
-
-.vwssc-hero::after{
-  content:"";
-
-  position:absolute;
-
-  width:180px;
-  height:180px;
-
-  bottom:-80px;
-  left:-60px;
-
-  border-radius:50%;
-
-  background:
-    rgba(255,255,255,0.06);
-
-  filter:blur(10px);
-}
-
-/* HERO CONTENT */
-
-.vwssc-hero-content{
   position:relative;
+}
+
+.vcpc-content{
+  max-width:950px;
+
+  color:#fff;
 
   z-index:2;
-
-  max-width:800px;
-
-  margin:auto;
 }
 
-/* BADGE */
-
-.vwssc-badge{
-  width:64px;
-  height:64px;
+.vcpc-icon{
+  width:95px;
+  height:95px;
 
   margin:auto;
+  margin-bottom:24px;
 
-  margin-bottom:16px;
+  background:#fff;
 
-  background:#ffffff;
+  color:#4f46e5;
 
-  color:#00735c;
-
-  border-radius:16px;
+  border-radius:24px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
-  font-size:28px;
+  font-size:42px;
+
+  transform:rotate(-10deg);
 
   box-shadow:
-    0 4px 14px rgba(0,0,0,0.12);
+    0 12px 28px rgba(0,0,0,0.25);
 }
 
-/* TITLE */
+.vcpc-content h1{
+  font-size:48px;
 
-.vwssc-hero h1{
-  font-size:
-    clamp(28px,5vw,42px);
+  font-weight:700;
 
-  color:#ffffff;
+  margin-bottom:18px;
 
-  margin-bottom:14px;
-
-  line-height:1.35;
-
-  font-weight:800;
+  line-height:1.3;
 }
 
-/* SUBTITLE */
+.vcpc-content p{
+  font-size:17px;
 
-.vwssc-hero p{
-  font-size:15px;
+  line-height:1.9;
 
-  line-height:1.8;
-
-  color:#f3f4f6;
-
-  max-width:680px;
-
-  margin:auto;
+  color:#e0e7ff;
 }
 
-/* CONTAINER */
+/* MAIN CONTAINER */
 
-.vwssc-container{
-  max-width:1200px;
+.vcpc-container{
+  max-width:1300px;
 
   margin:auto;
 
-  padding:45px 20px;
+  padding:90px 20px;
 }
 
 /* SECTION TITLE */
@@ -400,189 +325,252 @@ body{
 .section-title{
   text-align:center;
 
-  margin-bottom:36px;
+  margin-bottom:60px;
 }
 
 .section-title h2{
-  font-size:
-    clamp(26px,4vw,36px);
+  font-size:38px;
 
   color:#111827;
 
-  margin-bottom:10px;
-
-  font-weight:800;
+  margin-bottom:14px;
 }
 
 .title-line{
-  width:65px;
-  height:4px;
+  width:90px;
+  height:5px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #00b894,
-      #00735c
-    );
+  background:#4f46e5;
 
   margin:auto;
 
-  border-radius:999px;
+  border-radius:20px;
 }
 
 /* GRID */
 
-.vwssc-grid{
+.vcpc-grid{
   display:grid;
 
   grid-template-columns:
-    repeat(auto-fit,minmax(240px,1fr));
+    repeat(auto-fit,minmax(260px,1fr));
 
-  gap:20px;
+  gap:30px;
 }
 
 /* CARD */
 
-.vwssc-card{
-  background:#ffffff;
+.vcpc-card{
+  background:#fff;
 
-  border:1px solid #e5e7eb;
+  border-radius:28px;
 
-  border-radius:20px;
-
-  padding:24px 18px;
+  padding:35px 25px;
 
   text-align:center;
 
-  transition:0.25s ease;
+  position:relative;
+
+  overflow:hidden;
+
+  transition:0.4s ease;
 
   box-shadow:
-    0 4px 14px rgba(15,23,42,0.05);
+    0 10px 25px rgba(0,0,0,0.08);
 }
 
-.vwssc-card:hover{
-  transform:
-    translateY(-4px);
+.vcpc-card::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:6px;
+
+  background:
+    linear-gradient(
+      to right,
+      #6366f1,
+      #4f46e5
+    );
+}
+
+.vcpc-card:hover{
+  transform:translateY(-12px);
 
   box-shadow:
-    0 8px 20px rgba(0,115,92,0.10);
+    0 18px 45px rgba(79,70,229,0.2);
 }
 
 /* IMAGE */
 
-.vwssc-img{
-  width:95px;
-  height:95px;
+.vcpc-img{
+  width:130px;
+  height:130px;
+
+  margin:auto;
+  margin-bottom:22px;
 
   border-radius:50%;
 
   overflow:hidden;
 
-  margin:auto;
+  border:5px solid #e0e7ff;
 
-  margin-bottom:18px;
-
-  border:4px solid #dff7f1;
-
-  background:#f1f5f9;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.08);
 }
 
-.vwssc-img img{
+.vcpc-img img{
   width:100%;
   height:100%;
 
   object-fit:cover;
+
+  transition:0.4s ease;
+}
+
+.vcpc-card:hover .vcpc-img img{
+  transform:scale(1.08);
 }
 
 /* NAME */
 
-.vwssc-card h3{
-  font-size:17px;
+.vcpc-card h3{
+  font-size:20px;
 
   color:#111827;
 
-  margin-bottom:12px;
+  margin-bottom:14px;
 
   line-height:1.6;
 
-  font-weight:700;
+  min-height:65px;
 }
 
 /* ROLE */
 
-.vwssc-role{
+.vcpc-role{
   display:inline-block;
 
-  padding:7px 16px;
+  padding:8px 22px;
 
-  background:#dff7f1;
+  background:#eef2ff;
 
-  color:#00735c;
+  color:#4f46e5;
 
-  border-radius:999px;
-
-  font-size:13px;
-
-  font-weight:600;
-}
-
-/* MOBILE */
-
-.vwssc-mobile{
-  color:#64748b;
+  border-radius:30px;
 
   font-size:14px;
 
-  margin-top:10px;
-}
+  font-weight:600;
 
-/* TABLET */
-
-@media(max-width:768px){
-
-  .vwssc-grid{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
+  margin-bottom:12px;
 }
 
 /* MOBILE */
 
-@media(max-width:480px){
+.vcpc-mobile{
+  margin-top:12px;
 
-  .vwssc-grid{
-    grid-template-columns:1fr;
+  color:#475569;
+
+  font-size:15px;
+
+  font-weight:500;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+  .vcpc-content h1{
+    font-size:40px;
   }
 
-  .vwssc-hero h1{
+  .vcpc-grid{
+    grid-template-columns:
+      repeat(auto-fit,minmax(240px,1fr));
+  }
+}
+
+@media(max-width:768px){
+
+  .vcpc-hero{
+    min-height:360px;
+
+    border-bottom-left-radius:45px;
+    border-bottom-right-radius:45px;
+  }
+
+  .vcpc-content h1{
+    font-size:30px;
+  }
+
+  .vcpc-content p{
+    font-size:15px;
+  }
+
+  .section-title h2{
+    font-size:30px;
+  }
+
+  .vcpc-grid{
+    gap:22px;
+  }
+}
+
+@media(max-width:480px){
+
+  .vcpc-content h1{
     font-size:24px;
   }
 
-  .vwssc-hero p{
-    font-size:13px;
+  .vcpc-content p{
+    font-size:14px;
+  }
+
+  .vcpc-grid{
+    grid-template-columns:1fr;
+  }
+
+  .vcpc-card{
+    padding:30px 20px;
+  }
+
+  .vcpc-img{
+    width:115px;
+    height:115px;
+  }
+
+  .vcpc-card h3{
+    font-size:18px;
   }
 }
         `}
       </style>
 
-      <section className="vwssc-section">
+      <section className="vcpc-section">
 
         {/* HERO */}
 
-        <div className="vwssc-hero">
+        <div className="vcpc-hero">
 
-          <div className="vwssc-hero-content">
+          <div className="vcpc-content">
 
-            <div className="vwssc-badge">
-              💧
+            <div className="vcpc-icon">
+              👶
             </div>
 
             <h1>
-              {t("vwssc.title")}
+              {t("vcpc.title")}
             </h1>
 
             <p>
-              {t("vwssc.subtitle")}
+              {t("vcpc.subtitle")}
             </p>
 
           </div>
@@ -591,28 +579,28 @@ body{
 
         {/* MEMBERS */}
 
-        <div className="vwssc-container">
+        <div className="vcpc-container">
 
           <div className="section-title">
 
             <h2>
-              {t("vwssc.members")}
+              {t("vcpc.members")}
             </h2>
 
             <div className="title-line"></div>
 
           </div>
 
-          <div className="vwssc-grid">
+          <div className="vcpc-grid">
 
             {members.map((member) => (
 
               <div
-                className="vwssc-card"
+                className="vcpc-card"
                 key={member.id}
               >
 
-                <div className="vwssc-img">
+                <div className="vcpc-img">
 
                   <img
                     src={member.img}
@@ -631,11 +619,11 @@ body{
                     : member.name}
                 </h3>
 
-                <div className="vwssc-role">
+                <div className="vcpc-role">
                   {t(member.roleKey)}
                 </div>
 
-                <p className="vwssc-mobile">
+                <p className="vcpc-mobile">
                   📞 {member.mobile}
                 </p>
 
@@ -654,4 +642,4 @@ body{
   );
 };
 
-export default VWSSC;
+export default VCPC;
