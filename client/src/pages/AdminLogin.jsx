@@ -29,25 +29,41 @@ export default function AdminLogin() {
         process.env.REACT_APP_API_URL ||
         (
           window.location.hostname === 'localhost'
-            ? 'http://localhost:5000'
+            ? 'http://localhost:10000'
             : 'https://redgaon-backend.onrender.com'
         );
 
+      // Ensure no accidental double slashes
+      const API_BASE_NORMALIZED = API_BASE.replace(/\/+$/, '');
+
       console.log('AdminLogin API_BASE:', API_BASE);
 
-      const res = await fetch(`${API_BASE}/api/auth/login`, {
+      const res = await fetch(`${API_BASE_NORMALIZED}/api/auth/login`, {
         method: 'POST',
-
         headers: {
           'Content-Type': 'application/json'
         },
-
+        // backend sets cookie + also returns token in JSON.
+        // include credentials so cookies work if deployed with same-site/lax.
         credentials: 'include',
-
         body: JSON.stringify(form)
       });
 
-      const data = await res.json();
+      // Some server errors might return non-JSON bodies.
+      const raw = await res.text();
+      let data = {};
+      try {
+        data = raw ? JSON.parse(raw) : {};
+      } catch {
+        data = { message: raw || 'Login failed' };
+      }
+
+      if (!res.ok) {
+        throw new Error(
+          data.message ||
+          `Request failed with ${res.status}`
+        );
+      }
 
       if (data.success) {
 

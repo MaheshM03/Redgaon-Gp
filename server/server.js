@@ -207,15 +207,11 @@ app.use('/api', limiter);
 
 app.use(
   cors({
-
     origin: [
-
       'http://localhost:3000',
-
       'http://127.0.0.1:3000',
-
-      'https://redgaon-gp.vercel.app'
-
+      'https://redgaon-gp.onrender.com',
+      'https://www.redgaonkh.com'
     ],
 
     credentials: true,
@@ -233,7 +229,6 @@ app.use(
       'Content-Type',
       'Authorization'
     ]
-
   })
 );
 
@@ -254,21 +249,12 @@ app.use(
 
     saveUninitialized: false,
 
-    cookie: {
-
-      secure: false,
-
-      httpOnly: true,
-
-      sameSite: 'lax',
-
-      maxAge:
-        24 *
-        60 *
-        60 *
-        1000
-
-    }
+   cookie: {
+  secure: true,
+  httpOnly: true,
+  sameSite: 'none',
+  maxAge: 24 * 60 * 60 * 1000
+}
 
   })
 );
