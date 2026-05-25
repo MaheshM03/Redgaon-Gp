@@ -660,6 +660,15 @@ const Declaration = () => {
           margin-bottom:15px;
         }
 
+        .portal-heading p{
+
+          color:#6b7280;
+
+          font-size:16px;
+
+          line-height:1.8;
+        }
+
         .portal-grid{
 
           display:grid;
@@ -808,8 +817,6 @@ const Declaration = () => {
 
         <div className="declaration-container">
 
-          {/* SEARCH */}
-
           <div className="search-box">
 
             <span className="search-icon">
@@ -826,8 +833,6 @@ const Declaration = () => {
             />
 
           </div>
-
-          {/* GRID */}
 
           <div className="declaration-grid">
 
@@ -893,6 +898,383 @@ const Declaration = () => {
           </div>
 
         </div>
+
+        {/* PORTALS */}
+
+        <section className="portal-section">
+
+          <div className="portal-container">
+
+            <div className="portal-heading">
+
+              <h2>
+                Various Government Portals
+              </h2>
+
+              <p>
+
+                शासनाच्या विविध अधिकृत
+                पोर्टल्ससाठी खालील लिंकचा
+                वापर करा.
+
+              </p>
+
+            </div>
+
+            <div className="portal-grid">
+
+  {/* 1 */}
+
+  <a
+    href="https://gr.maharashtra.gov.in/1145/Government-Resolutions"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      📜
+    </div>
+
+    <h3>
+      शासन निर्णय
+    </h3>
+
+    <p>
+      महाराष्ट्र शासनाचे विविध शासन निर्णय
+      पाहण्यासाठी इथे click करा.
+    </p>
+
+  </a>
+
+  {/* 2 */}
+
+  <a
+    href="https://maharashtra.gov.in/Site/ViewPDFList?doctype=R/m8/CavzsOmBKuREE9kWgvI09nVvwQImYMEm1tPfTwRcIKkAeQzS1L5_1VU1b8Nt26E0_bWmVDE26DJBQMJznfvpERSjMkTAmFBZN2sogc="
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🏛️
+    </div>
+
+    <h3>
+      मंत्रिमंडळ निर्णय
+    </h3>
+
+    <p>
+      मंत्रिमंडळ निर्णय पाहण्यासाठी
+      इथे click करा.
+    </p>
+
+  </a>
+
+  {/* 3 */}
+
+  <a
+    href="https://maharashtra.gov.in/home/index"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🌐
+    </div>
+
+    <h3>
+      महाराष्ट्र शासन
+    </h3>
+
+    <p>
+      महाराष्ट्र शासनाचे अधिकृत संकेतस्थळ
+    </p>
+
+  </a>
+
+  {/* 4 */}
+
+  <a
+    href="https://nashik.gov.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🏙️
+    </div>
+
+    <h3>
+      नाशिक जिल्हा
+    </h3>
+
+    <p>
+      नाशिक जिल्ह्याचे अधिकृत संकेतस्थळ
+    </p>
+
+  </a>
+
+  {/* 5 */}
+
+  <a
+    href="https://egramswaraj.gov.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🖥️
+    </div>
+
+    <h3>
+      eGramSwaraj
+    </h3>
+
+    <p>
+      eGramSwaraj Portal
+    </p>
+
+  </a>
+
+  {/* 6 */}
+
+  <a
+    href="https://aaplesarkar.mahaonline.gov.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      📋
+    </div>
+
+    <h3>
+      आपले सरकार
+    </h3>
+
+    <p>
+      आपले सरकार पोर्टल
+    </p>
+
+  </a>
+
+  {/* 7 */}
+
+  <a
+    href="https://uidai.gov.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🪪
+    </div>
+
+    <h3>
+      आधार
+    </h3>
+
+    <p>
+      UIDAI आधार सेवा
+    </p>
+
+  </a>
+
+  {/* 8 */}
+
+  <a
+    href="https://mahabhumi.gov.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🌾
+    </div>
+
+    <h3>
+      डिजिटल ७/१२
+    </h3>
+
+    <p>
+      महाभूमी डिजिटल जमीन नोंद
+    </p>
+
+  </a>
+
+  {/* 9 */}
+
+  <a
+    href="https://divyangsahayak.maharashtra.gov.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      ♿
+    </div>
+
+    <h3>
+      दिव्यांग सहाय्यक
+    </h3>
+
+    <p>
+      दिव्यांग सहाय्यक पोर्टल
+    </p>
+
+  </a>
+
+  {/* 10 */}
+
+  <a
+    href="https://voters.eci.gov.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🗳️
+    </div>
+
+    <h3>
+      मतदाता सेवा
+    </h3>
+
+    <p>
+      मतदाता सेवा पोर्टल
+    </p>
+
+  </a>
+
+  {/* 11 */}
+
+  <a
+    href="https://grammanchitra.gov.in/gm4MVC"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🗺️
+    </div>
+
+    <h3>
+      ग्राम मानचित्र
+    </h3>
+
+    <p>
+      ग्राम मानचित्र पोर्टल
+    </p>
+
+  </a>
+
+  {/* 12 */}
+
+  <a
+    href="https://www.digilocker.gov.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🔐
+    </div>
+
+    <h3>
+      DigiLocker
+    </h3>
+
+    <p>
+      DigiLocker सेवा
+    </p>
+
+  </a>
+
+  {/* 13 */}
+
+  <a
+    href="https://meetingonline.gov.in/homepage"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      📑
+    </div>
+
+    <h3>
+      पंचायत निर्णय
+    </h3>
+
+    <p>
+      पंचायत निर्णय पोर्टल
+    </p>
+
+  </a>
+
+  {/* 14 */}
+
+  <a
+    href="https://nrega.dord.gov.in/MGNREGA_new/Nrega_home.aspx"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      👷
+    </div>
+
+    <h3>
+      रोजगार हमी योजना
+    </h3>
+
+    <p>
+      महात्मा गांधी रोजगार हमी योजना
+    </p>
+
+  </a>
+
+  {/* 15 */}
+
+  <a
+    href="https://mgmd.gov.in/explore"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="portal-card"
+  >
+
+    <div className="portal-icon">
+      🏡
+    </div>
+
+    <h3>
+      मेरा गाव मेरी धरोहर
+    </h3>
+
+    <p>
+      मेरा गाव मेरी धरोहर पोर्टल
+    </p>
+
+  </a>
+
+</div>
+
+          </div>
+
+        </section>
 
       </section>
 
