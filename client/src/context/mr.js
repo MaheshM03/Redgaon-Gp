@@ -121,6 +121,17 @@ const mr = {
   'hero.minister4.role': 'मुख्य कार्यकारी अधिकारी, जिल्हा परिषद ',
   'hero.minister4.desc': 'ग्रामपंचायत बळकटी आणि 73व्या दुरुस्तीचे अंमलबजावणी',
 
+  'hero.minister5.name': 'श्री. जयकुमार गोरे',
+  'hero.minister5.role': 'माननीय मंत्री, ग्रामविकास आणि पंचायत राज ',
+  // 'hero.minister5.desc': 'ग्रामपंचायत बळकटी आणि 73व्या दुरुस्तीचे अंमलबजावणी',
+  'hero.minister6.name': 'श्री. योगेश कदम',
+  'hero.minister6.role': 'माननीय राज्यमंत्री, ग्रामीण विकास आणि पंचायत राज, ',
+  // 'hero.minister6.desc': 'ग्रामपंचायत बळकटी आणि 73व्या दुरुस्तीचे अंमलबजावणी',
+  'hero.minister7.name': 'डॉ. चंद्रकांत पुलकुंडवार',
+  'hero.minister7.role': 'सचिव, ग्रामविकास आणि पंचायत राज, ',
+  // 'hero.minister7.desc': 'ग्रामपंचायत बळकटी आणि 73व्या दुरुस्तीचे अंमलबजावणी',
+
+
   'hero.official1.name': 'श्री यादव काशिनाथ गरुड ',
   'hero.official1.role': 'सरपंच',
   'hero.official1.desc': 'ग्रामपंचायतचे प्रमुख',
@@ -161,7 +172,7 @@ const mr = {
   'contact.option.scheme': 'योजना',
   'contact.option.other': 'इतर',
 
-  'contact.info.phone': '📞 (02346) 243535',
+  'contact.info.phone': '',
   'contact.info.email': '✉️ chdredgaon@gmail.com ',
  'contact.info.address':
 'ता. चांदवड, जि. नाशिक – 422306',

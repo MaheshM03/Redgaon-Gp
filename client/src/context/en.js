@@ -84,6 +84,16 @@ const en = {
   'hero.minister4.name': 'Omkar Pawar',
   'hero.minister4.role': 'Chief Executive Officer, Zilla Parishad',
   'hero.minister4.desc': 'Gram Panchayat strengthening and 73rd amendment implementation',
+   'hero.minister5.name': 'Shri. Jayakumar Gore',
+  'hero.minister5.role': "Ho'nble Minister, Rural Development and Panchayat Raj",
+  'hero.minister5.desc': 'Gram Panchayat strengthening and 73rd amendment implementation',
+   'hero.minister6.name': 'Shri. Yogesh Kadam',
+  'hero.minister6.role': "Hon'ble Minister of State, Rural Development and Panchayat Raj",
+  'hero.minister6.desc': 'Gram Panchayat strengthening and 73rd amendment implementation',
+   'hero.minister7.name': 'Dr. Chandrakant Pulkundwar',
+  'hero.minister7.role': 'Secretary, Rural Development and Panchayat Raj,',
+  'hero.minister7.desc': 'Gram Panchayat strengthening and 73rd amendment implementation',
+  
 
   'hero.official1.name': 'Shri Yadav Kashinath Garud',
   'hero.official1.role': 'Sarpanch',
@@ -435,8 +445,8 @@ const en = {
 "contact.option.other":
   "Other",
 
-"contact.info.phone":
-  "📞 (02346) 243535",
+// "contact.info.phone":
+//   "📞 (02346) 243535",
 
 "contact.info.email":
   "✉️ chdredgaon@gmail.com",

@@ -5,13 +5,17 @@ const ministers = [
   { nameKey: "hero.minister1.name", roleKey: "hero.minister1.role", img: "/Devendra Fadnavis.jfif", descKey: "hero.minister1.desc" },
   { nameKey: "hero.minister2.name", roleKey: "hero.minister2.role", img: "/eknath shinde.avif", descKey: "hero.minister2.desc" },
   { nameKey: "hero.minister3.name", roleKey: "hero.minister3.role", img: "/sunetra ajit pawar.jfif", descKey: "hero.minister3.desc" },
-  { nameKey: "hero.minister4.name", roleKey: "hero.minister4.role", img: "/omkar pawar.jfif", descKey: "hero.minister4.desc" },
+ 
+   { nameKey: "hero.minister5.name", roleKey: "hero.minister5.role", img: "/Jaykumar gore.png", descKey: "hero.minister5.desc" },
+    { nameKey: "hero.minister6.name", roleKey: "hero.minister6.role", img: "/yogesh kadam.png", descKey: "hero.minister6.desc" },
+     { nameKey: "hero.minister7.name", roleKey: "hero.minister7.role", img: "/chandrakant pulkundwar.jpg", descKey: "hero.minister7.desc" },
+      { nameKey: "hero.minister4.name", roleKey: "hero.minister4.role", img: "/omkar pawar.jfif", descKey: "hero.minister4.desc" },
 ];
 
 const gpOfficials = [
   { nameKey: "hero.official1.name", roleKey: "hero.official1.role", img: "/श्री यादव काशिनाथ गरुड.jpeg", descKey: "hero.official1.desc" },
   { nameKey: "hero.official2.name", roleKey: "hero.official2.role", img: "/सौ सुनिता अण्णासाहेब काळे.jpeg", descKey: "hero.official2.desc" },
-  { nameKey: "hero.official3.name", roleKey: "hero.official3.role", img: "", descKey: "hero.official3.desc" },
+  { nameKey: "hero.official3.name", roleKey: "hero.official3.role", img: "/श्री सचिन त्रम्बक सानप.jpeg", descKey: "hero.official3.desc" },
 ];
 
 export default function Hero() {
@@ -528,6 +532,32 @@ header,
     font-size: 18px;
   }
 }
+  .minister-row-1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.minister-row-2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .minister-row-1,
+  .minister-row-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .minister-row-1,
+  .minister-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ───────────────── EXTRA SMALL ───────────────── */
 
@@ -554,23 +584,55 @@ header,
           <div className="hr-container">
 
             {/* Ministers */}
-            <div className="hr-section-head">
-              <h2> {t("hero.ministers")}</h2>
-              <div className="hr-section-line" />
-            </div>
-            <div className="hr-grid">
-              {ministers.map((m, i) => (
-                  <div key={i} className="hr-card"
-                  onClick={() => setSelected({ ...m, isOfficial: false })}>
-                  <div className="hr-card-img-wrap">
-                    <div className="hr-card-ring" />
-{m.img ? <img src={m.img} alt={t(m.nameKey)} className="hr-card-img" /> : null}
-                  </div>
-                  <h3>{t(m.nameKey)}</h3>
-                  <p>{t(m.roleKey)}</p>
-                </div>
-              ))}
-            </div>
+            {/* First Row - 3 Ministers */}
+<div className="minister-row-1">
+  {ministers.slice(0, 3).map((m, i) => (
+    <div
+      key={i}
+      className="hr-card"
+      onClick={() => setSelected({ ...m, isOfficial: false })}
+    >
+      <div className="hr-card-img-wrap">
+        <div className="hr-card-ring" />
+        {m.img ? (
+          <img
+            src={m.img}
+            alt={t(m.nameKey)}
+            className="hr-card-img"
+          />
+        ) : null}
+      </div>
+
+      <h3>{t(m.nameKey)}</h3>
+      <p>{t(m.roleKey)}</p>
+    </div>
+  ))}
+</div>
+
+{/* Second Row - 4 Ministers */}
+<div className="minister-row-2">
+  {ministers.slice(3, 7).map((m, i) => (
+    <div
+      key={i}
+      className="hr-card"
+      onClick={() => setSelected({ ...m, isOfficial: false })}
+    >
+      <div className="hr-card-img-wrap">
+        <div className="hr-card-ring" />
+        {m.img ? (
+          <img
+            src={m.img}
+            alt={t(m.nameKey)}
+            className="hr-card-img"
+          />
+        ) : null}
+      </div>
+
+      <h3>{t(m.nameKey)}</h3>
+      <p>{t(m.roleKey)}</p>
+    </div>
+  ))}
+</div>
 
             {/* GP Officials */}
             <div className="hr-section-head" style={{ marginTop: "clamp(24px, 4vw, 36px)" }}>
